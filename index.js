@@ -7,20 +7,20 @@ var mLab = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/image_search';
 var port = process.env.PORT || 3000;
 
 
-mongoC.connect(mLab, function(err,db){
-    if (err){
+mongoC.connect(mLab, function(err, db){
+    if(err){
         console.log(err);
     }
-    console.log('mongo connected on ' + mLab);
-
-    app.listen(port, function(err){
-         if(err){ 
-             console.log(err);
-         }
-         console.log('node connected on '+ port);
+    else{
+        console.log("mongoDB connnected on port "+ mLab);
+    }
+    
+    app.listen(port, function(){
+        console.log("node connected on port " + port);
     });
+    
     db.createCollection('recent');
     
-    api(app, db);
-
+    api(app,db);
+    
 });
