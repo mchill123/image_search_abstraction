@@ -18,9 +18,9 @@ mongoC.connect(mLab, function(err,db){
              console.log(err);
          }
          console.log('node connected on '+ port);
-    
+    });
     db.createCollection('recent');
     
     api(app, db);
-});
+
 });
