@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var mongo = require('mongodb');
 var mongoC= mongo.MongoClient;
-var mLab = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/image_search';
+var mLab = process.env.MONGODB_URI || 'mongodb://localhost:27017/image_search';
 var port = process.env.PORT || 3000;
 
 
