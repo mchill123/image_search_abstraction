@@ -21,6 +21,6 @@ mongoC.connect(mLab, function(err,db){
     
     db.createCollection('recent');
     
-    api(app);
+    api(app, db);
 });
 });
