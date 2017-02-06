@@ -9,13 +9,13 @@ var soog = new goog({
 
 
 module.exports= function(app, db){
-    
+     app.all('/recent', function(req,res){
+        res.send('recent');
+    });
    
     app.get('/:query', searchSave);
     
-    app.all('/recent', function(req,res){
-        res.send('recent');
-    });
+   
     
     function searchSave(req, res){
         var search = req.params.query.split(' ').join('+');
