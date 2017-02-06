@@ -33,7 +33,7 @@ module.exports= function(app, db){
             if (err){
                 console.log(err);
             }
-            console.log(data.items[0].pagemap);
+            console.log(data.items[0].pagemap.cse_image[0]);
             res.send(sort(data));
         });
         
