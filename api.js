@@ -33,7 +33,7 @@ module.exports= function(app, db){
             if (err){
                 console.log(err);
             }
-            console.log(data.items[0].pagemap.cse_image);
+            console.log(data.items[0].pagemap);
             res.send(sort(data));
         });
         
@@ -43,7 +43,7 @@ module.exports= function(app, db){
         var obj = [];
         for(var i=0;i<10;i++){
             var hit = {
-                'url': data.items[i].pagemap.cse_image
+                'url': data.items[i].pagemap
             };
             obj.push(hit);
         }
