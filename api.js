@@ -33,9 +33,18 @@ module.exports= function(app, db){
             if (err){
                 console.log(err);
             }
-            console.log(data.items);
-            res.send(data.items[1].pagemap);
+            sort(data)
         });
+        
+    }
+    
+    function sort(data){
+        var obj = [];
+        for(var i=0;i<10;i++){
+            var hit = {
+                'url': data.item[i].pagemap.cse_image.src
+            }
+        }
     }
     
 };
