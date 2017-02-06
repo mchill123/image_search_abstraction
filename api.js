@@ -1,9 +1,36 @@
 var path = require('path');
+var goog = require('google-search');
+var soog = new goog({
+    key: 'AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc',
+    cx: '005494827447375698070:kljageccrgu'
+});
+
+
+
 
 module.exports= function(app, db){
     
-    app.all('/', function(req, res){
-        var filename = path.join(__dirname, 'index.html');
-        res.sendFile(filename);
+   
+    app.get('/:query', searchSave);
+    
+    app.all('/recent', function(req,res){
+        res.send('recent');
     });
+    
+    function searchSave(req, res){
+        var search = req.params.query.split(' ').join('+');
+        var offset = req.query.offset*10;
+        
+        soog.build({
+            q: search,
+            start: offset,
+            num: 10
+        }, function(err, data){
+            if (err){
+                console.log(err);
+            }
+            res.send(data);
+        });
+    }
+    
 };

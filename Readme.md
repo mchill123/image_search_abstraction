@@ -11,3 +11,5 @@ User Story: I can paginate through the responses by adding a ?offset=2 parameter
 User Story: I can get a list of the most recently submitted search strings.
 
 https://blooming-depths-84433.herokuapp.com/ 
+
+custom search url: https://cse.google.com/cse/publicurl?cx=005494827447375698070:kljageccrgu
