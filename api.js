@@ -33,6 +33,7 @@ module.exports= function(app, db){
             if (err){
                 console.log(err);
             }
+            console.log(data.item[0].pagemap)
             res.send(sort(data));
         });
         
@@ -42,7 +43,7 @@ module.exports= function(app, db){
         var obj = [];
         for(var i=0;i<10;i++){
             var hit = {
-                'url': data.items[i].pagemap.url
+                'url': data.items[i].pagemap
             };
             obj.push(hit);
         }
