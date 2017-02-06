@@ -34,7 +34,7 @@ module.exports= function(app, db){
                 console.log(err);
             }
             console.log(data);
-            res.send(data.items);
+            res.send(data.items.pagemap);
         });
     }
     
