@@ -19,11 +19,15 @@ module.exports= function(app, db){
     
     function searchSave(req, res){
         var search = req.params.query.split(' ').join('+');
-        var offset = req.query.offset*10;
+        var offset;
+        if ((req.query.offset >=1) === false){
+            offset = 1;
+        }else offset = req.query.offset*10;
         
         soog.build({
             q: search,
             start: offset,
+            filetype: 'jpg',
             num: 10
         }, function(err, data){
             if (err){
