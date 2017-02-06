@@ -33,7 +33,7 @@ module.exports= function(app, db){
             if (err){
                 console.log(err);
             }
-            sort(data)
+            res.send(sort(data));
         });
         
     }
@@ -42,9 +42,11 @@ module.exports= function(app, db){
         var obj = [];
         for(var i=0;i<10;i++){
             var hit = {
-                'url': data.item[i].pagemap.cse_image.src
-            }
+                'url': data.items[i].pagemap.cse_image.src
+            };
+            obj.push(hit);
         }
+        return obj;
     }
     
 };
