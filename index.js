@@ -26,7 +26,7 @@ mongoC.connect(mLab, function(err, db){
   console.log("node connected on port " + port);
     });
     
-  app.use(favicon(__dirname + '/public/favicon.ico'));
+  
     
     api(app,db);
     
