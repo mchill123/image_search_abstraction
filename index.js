@@ -16,13 +16,7 @@ mongoC.connect(mLab, function(err, db){
         console.log("mongoDB connnected on port "+ mLab);
     }
     
-    app.listen(port, function(q,r){
-         if (q.url === '/favicon.ico') {
-    r.writeHead(200, {'Content-Type': 'image/x-icon'} );
-    r.end();
-    console.log('favicon requested');
-    return;
-  }
+    app.listen(port, function(){
   console.log("node connected on port " + port);
     });
     
