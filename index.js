@@ -1,4 +1,5 @@
 var api = require('./api');
+var favicon = require('serve-favicon');
 var express = require('express');
 var app = express();
 var mongo = require('mongodb');
@@ -19,7 +20,7 @@ mongoC.connect(mLab, function(err, db){
         console.log("node connected on port " + port);
     });
     
-  app.use(express.favicon());
+  app.use(favicon(__dirname + '/public/favicon.ico'));
     
     api(app,db);
     
