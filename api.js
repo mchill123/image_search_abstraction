@@ -36,7 +36,7 @@ module.exports= function(app, db){
             if (err){
                 console.log(err);
             }
-            console.log(data.items.pagemap);
+            console.log(data.items[0].pagemap);
             res.send(sort(data));
         });
         

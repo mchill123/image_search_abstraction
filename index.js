@@ -19,7 +19,7 @@ mongoC.connect(mLab, function(err, db){
         console.log("node connected on port " + port);
     });
     
-  
+  app.use(express.favicon());
     
     api(app,db);
     
