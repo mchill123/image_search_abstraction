@@ -45,7 +45,7 @@ module.exports= function(app, db){
     function sort(data){
         var obj = [];
         for(var i=0;i<10;i++){
-            console.log(data.items[0].pagemap);
+            console.log(data.items[i].pagemap);
             var url = data.items[i].pagemap;
             var hit = {
                 'url': url
