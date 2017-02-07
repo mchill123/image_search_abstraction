@@ -43,7 +43,7 @@ module.exports= function(app, db){
         var obj = [];
         for(var i=0;i<10;i++){
             var hit = {
-                'url': data.items[i].pagemap.cse_image
+                'url': data.items[i].pagemap.cse_image.src
             };
             obj.push(hit);
         }
