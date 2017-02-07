@@ -44,8 +44,8 @@ module.exports= function(app, db){
     
     function sort(data){
         var obj = [];
-        var url = data.items[i].pagemap.cse_image.src;
         for(var i=0;i<10;i++){
+            var url = data.items[i].pagemap.cse_image.src;
             var hit = {
                 'url': url
             };
