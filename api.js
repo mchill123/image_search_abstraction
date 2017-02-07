@@ -9,6 +9,9 @@ var soog = new goog({
 
 
 module.exports= function(app, db){
+     app.all('/', function(req,res){
+         res.send('landing page');
+     });
      app.all('/recent', function(req,res){
         res.send('recent');
     });
