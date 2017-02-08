@@ -7,15 +7,16 @@ var request = require('request');
 
 module.exports= function(app, db){
      
+     app.all('/', function(req,res){
+         res.send('landing page');
+     });
      app.all('/recent', function(req,res){
         res.send('recent');
     });
    
     app.get('/:query', searchSave);
     
-    app.all('/', function(req,res){
-         res.send('landing page');
-     });
+    
     
    
     
@@ -33,12 +34,13 @@ module.exports= function(app, db){
     
     
     function searchGoog(search, offset){
-       return(request('https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=items%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
+        var b = []
+       request('https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=items%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
           if (err){
               console.log(err);
           }
           var a= JSON.parse(data);
-       var b = a.items.map(function(i){
+       b = a.items.map(function(i){
             var obj = {
                 'title': i.title,
                 'url': i.link,
@@ -47,8 +49,8 @@ module.exports= function(app, db){
             saveSearch(search.split('+').join(' '), db);
             return obj;
         });
-        return b;
-      }));
+      });
+      return b;
     }
     
     function saveSearch(search, db){
