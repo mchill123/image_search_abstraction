@@ -28,8 +28,8 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-         
-          res.send(data.items[0]);
+         var a = data.items
+          res.send(a);
       });
       
       
