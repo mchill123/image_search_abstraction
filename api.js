@@ -1,6 +1,6 @@
 var path = require('path');
 var request = require('request');
-//'005494827447375698070:kljageccrgu', 'AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc');
+
 
 
 
@@ -76,7 +76,7 @@ module.exports= function(app, db){
     
     function recent(req, res){
         var recent = db.collection('recent');
-        recent.find().sort({$natural:-1}).limit(10).toArray(function(err, data){
+        recent.find().sort({time:-1}).limit(10).toArray(function(err, data){
             if (err){
                 console.log(err);
             }
