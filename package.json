@@ -21,6 +21,7 @@
     "google-images": "^2.0.0",
     "google-search": "0.0.5",
     "mongodb": "^2.2.22",
+    "request": "^2.79.0",
     "serve-favicon": "^2.3.2"
   }
 }

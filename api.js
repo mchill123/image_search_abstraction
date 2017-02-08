@@ -1,6 +1,6 @@
 var path = require('path');
-var goog = require('google-images');
-var soog = new goog('005494827447375698070:kljageccrgu', 'AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc');
+var request = require('request')
+//'005494827447375698070:kljageccrgu', 'AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc');
 
 
 
@@ -22,13 +22,14 @@ module.exports= function(app, db){
         var offset;
         if ((req.query.offset >=1) === false){
             offset = 1;
-        }else offset = req.query.offset;
+        }else offset = req.query.offset*10;
         
-      soog.search(search, {page: offset}).then(function(data){
+      request('GET https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=context%2Citems%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
+          if (err){
+              console.log(err)
+          }
           res.send(data);
-      }, function(err){
-          console.log(err);
-      });
+      })
       
       
             
