@@ -72,7 +72,7 @@ module.exports= function(app, db){
     
     function recent(req, res){
         var recent = db.collection('recent');
-        recent.find().sort({$natural, -1}).limit(10).toArray(function(err, data){
+        recent.find().sort({$natural, 1}).limit(10).toArray(function(err, data){
             if (err){
                 console.log(err);
             }
