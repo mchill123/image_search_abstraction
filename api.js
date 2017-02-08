@@ -7,14 +7,12 @@ var request = require('request');
 
 module.exports= function(app, db){
      app.all('/favicon.ico', function(req, res){
-         console.log('favicon')
+         console.log('favicon');
      });
      app.all('/', function(req,res){
          res.send('landing page');
      });
-     app.all('/recent', function(req,res){
-        res.send('recent');
-    });
+     app.all('/recent', recent);
    
     app.get('/:query', searchSave);
     
@@ -72,5 +70,15 @@ module.exports= function(app, db){
         }));
     }
     
+    function recent(req, res){
+        var recent = db.collection('recent');
+        recent.find().sort({$natural, -1}).limit(10).toArray(function(err, data){
+            if (err){
+                console.log(err);
+            }
+            var a = JSON.parse(data)
+            res.send(a);
+        })
+    }
     
 };
