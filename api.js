@@ -29,10 +29,8 @@ module.exports= function(app, db){
               console.log(err);
           }
           console.log(data);
-         var a = data.map(function(items){
-             return(items.link)
-         })
-          res.send(a);
+        res.send(data);
+         
       });
       
       
