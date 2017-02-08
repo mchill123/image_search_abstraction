@@ -36,7 +36,8 @@ module.exports= function(app, db){
                 'url': i.link,
                 'snippet': i.snippet
                 
-            }
+            };
+            return obj;
         }));
        
          
