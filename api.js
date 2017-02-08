@@ -77,7 +77,13 @@ module.exports= function(app, db){
                 console.log(err);
             }
             
-            res.send(data);
+            res.send(data.map(function(i){
+                var obj = {
+                    'term': i.term,
+                    'time': i.time
+                };
+                return obj;
+            }));
         });
     }
     
