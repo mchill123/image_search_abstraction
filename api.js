@@ -28,7 +28,15 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-          res.send(data);
+          var list = []
+          for(var i=0;i<10;i++){
+          var obj = {
+              'url': data.items[i].link,
+              'snippit': data.items[i].snippet,
+              }
+              list.push(obj);
+          }
+          res.send(list);
       });
       
       
