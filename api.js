@@ -24,12 +24,14 @@ module.exports= function(app, db){
             offset = 1;
         }else offset = req.query.offset*10;
         
-      request('https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=context%2Citems%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
+      request('https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=items%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
           if (err){
               console.log(err);
           }
-          console.log(data.context);
-         var a = data
+          console.log(data);
+         var a = data.map(function(items){
+             return(items.link)
+         })
           res.send(a);
       });
       
