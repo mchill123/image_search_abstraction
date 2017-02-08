@@ -28,7 +28,7 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-          var a= JSON.pars(data);
+          var a= JSON.parse(data);
           console.log(a);
         res.send(a);
        
