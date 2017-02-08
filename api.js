@@ -1,5 +1,5 @@
 var path = require('path');
-var request = require('request')
+var request = require('request');
 //'005494827447375698070:kljageccrgu', 'AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc');
 
 
@@ -28,12 +28,12 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-          var list = []
+          var list = [];
           for(var i=0;i<10;i++){
           var obj = {
-              'url': data.items[i].link,
-              'snippit': data.items[i].snippet,
-              }
+              'url': data.items[parseInt(i)].link,
+              'snippit': data.items[parseInt(i)].snippet
+              };
               list.push(obj);
           }
           res.send(list);
