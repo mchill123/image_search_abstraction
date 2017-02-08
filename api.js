@@ -1,6 +1,6 @@
 var path = require('path');
 var goog = require('google-images');
-var soog = new goog('AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc','005494827447375698070:kljageccrgu');
+var soog = new goog('005494827447375698070:kljageccrgu', 'AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc');
 
 
 
