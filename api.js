@@ -28,16 +28,8 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-          var list = [];
-          for(var i=0;i<10;i++){
-             var item = data.items[i]
-          var obj = {
-              'url': item.link,
-              'snippit': item.snippet
-              };
-              list.push(obj);
-          }
-          res.send(list);
+         
+          res.send(data);
       });
       
       
