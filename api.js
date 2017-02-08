@@ -29,7 +29,7 @@ module.exports= function(app, db){
               console.log(err);
           }
          
-          res.send(data.items);
+          res.send(data);
       });
       
       
