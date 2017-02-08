@@ -28,11 +28,10 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-          var a= data
+          var a= JSON.pars(data);
           console.log(a);
-        res.send((a.items).map(function(i){
-            return(i.title)
-        }));
+        res.send(a);
+       
          
       });
       
