@@ -30,9 +30,10 @@ module.exports= function(app, db){
           }
           var list = [];
           for(var i=0;i<10;i++){
+             
           var obj = {
-              'url': data.items[parseInt(i)].link,
-              'snippit': data.items[parseInt(i)].snippet
+              'url': data.items[i].link,
+              'snippit': data.items[i].snippet
               };
               list.push(obj);
           }
