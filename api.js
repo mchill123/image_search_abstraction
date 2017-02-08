@@ -28,7 +28,7 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-          console.log(data['items']);
+          console.log(data.context);
          var a = data
           res.send(a);
       });
