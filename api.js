@@ -26,14 +26,14 @@ module.exports= function(app, db){
             offset = 1;
         }else offset = req.query.offset*10;
         
-        saveSearch(search, db);
+        
         res.send(searchGoog(search, offset));
     }
     
     
     
     function searchGoog(search, offset){
-        request('https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=items%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
+       return(request('https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=items%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
           if (err){
               console.log(err);
           }
@@ -44,10 +44,11 @@ module.exports= function(app, db){
                 'url': i.link,
                 'snippet': i.snippet
             };
+            saveSearch(search.split('+').join(' '), db);
             return obj;
         });
-       return b 
-      });
+        return b;
+      }));
     }
     
     function saveSearch(search, db){
