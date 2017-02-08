@@ -6,14 +6,16 @@ var request = require('request');
 
 
 module.exports= function(app, db){
-     app.all('/', function(req,res){
-         res.send('landing page');
-     });
+     
      app.all('/recent', function(req,res){
         res.send('recent');
     });
    
     app.get('/:query', searchSave);
+    
+    app.all('/', function(req,res){
+         res.send('landing page');
+     });
     
    
     
@@ -36,14 +38,15 @@ module.exports= function(app, db){
               console.log(err);
           }
           var a= JSON.parse(data);
-        return(a.items.map(function(i){
+       var b = a.items.map(function(i){
             var obj = {
                 'title': i.title,
                 'url': i.link,
                 'snippet': i.snippet
             };
             return obj;
-        }));
+        });
+       return b 
       });
     }
     
