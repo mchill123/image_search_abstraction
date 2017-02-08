@@ -10,8 +10,9 @@ module.exports= function(app, db){
          console.log('favicon');
      });
      app.all('/', function(req,res){
-         res.send('landing page');
-     });
+    var filename = path.join(__dirname, 'index.html');
+    res.sendFile(filename);
+});
      app.all('/recent', recent);
    
     app.get('/:query', searchSave);
@@ -45,6 +46,7 @@ module.exports= function(app, db){
       
     }
     
+    
     function saveSearch(search, db){
         var date = new Date();
         var sObj = {
@@ -59,6 +61,7 @@ module.exports= function(app, db){
         });
     }
     
+    
     function buildIt(a, search){
         return(a.items.map(function(i){
             var obj = {
@@ -69,6 +72,7 @@ module.exports= function(app, db){
             return obj;
         }));
     }
+    
     
     function recent(req, res){
         var recent = db.collection('recent');
