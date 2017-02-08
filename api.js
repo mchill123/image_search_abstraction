@@ -30,10 +30,10 @@ module.exports= function(app, db){
           }
           var list = [];
           for(var i=0;i<10;i++){
-             
+             var item = data.items[i]
           var obj = {
-              'url': data.items[i].link,
-              'snippit': data.items[i].snippet
+              'url': item.link,
+              'snippit': item.snippet
               };
               list.push(obj);
           }
