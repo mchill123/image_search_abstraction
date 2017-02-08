@@ -30,7 +30,7 @@ module.exports= function(app, db){
           }
           var a= JSON.parse(data);
           console.log(a);
-        res.send(a);
+        res.send(a.items);
        
          
       });
