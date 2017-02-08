@@ -6,7 +6,9 @@ var request = require('request');
 
 
 module.exports= function(app, db){
-     
+     app.all('/favicon.ico', function(req, res){
+         console.log('favicon')
+     });
      app.all('/', function(req,res){
          res.send('landing page');
      });
@@ -40,17 +42,9 @@ module.exports= function(app, db){
               console.log(err);
           }
           var a= JSON.parse(data);
-       b = a.items.map(function(i){
-            var obj = {
-                'title': i.title,
-                'url': i.link,
-                'snippet': i.snippet
-            };
-            saveSearch(search.split('+').join(' '), db);
-            return obj;
-        });
+          return(buildIt(a, search));
       });
-      return b;
+      
     }
     
     function saveSearch(search, db){
@@ -67,6 +61,17 @@ module.exports= function(app, db){
         });
     }
     
+    function buildIt(a, search){
+        return(a.items.map(function(i){
+            var obj = {
+                'title': i.title,
+                'url': i.link,
+                'snippet': i.snippet
+            };
+            saveSearch(search.split('+').join(' '), db);
+            return obj;
+        }));
+    }
     
     
 };
