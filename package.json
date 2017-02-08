@@ -18,6 +18,7 @@
   "homepage": "https://github.com/mchill123/image_search_abstraction#readme",
   "dependencies": {
     "express": "^4.14.1",
+    "google-images": "^2.0.0",
     "google-search": "0.0.5",
     "mongodb": "^2.2.22",
     "serve-favicon": "^2.3.2"

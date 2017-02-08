@@ -1,9 +1,6 @@
 var path = require('path');
-var goog = require('google-search');
-var soog = new goog({
-    key: 'AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc',
-    cx: '005494827447375698070:kljageccrgu'
-});
+var goog = require('google-images');
+var soog = new goog('AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc','005494827447375698070:kljageccrgu');
 
 
 
@@ -21,38 +18,18 @@ module.exports= function(app, db){
    
     
     function searchSave(req, res){
-        var search = req.params.query.split(' ').join('+');
+        var search = req.params.query.split(' ').join(' ');
         var offset;
         if ((req.query.offset >=1) === false){
             offset = 1;
-        }else offset = req.query.offset*10;
+        }else offset = req.query.offset;
         
-        soog.build({
-            q: search,
-            start: offset,
-            filetype: 'jpg',
-            num: 10
-        }, function(err, data){
-            if (err){
-                console.log(err);
-            }
+        soog.search(search, {page: offset}).then(function(data){
+            console.log(data)
+        })
             
-            res.send(sort(data));
-        });
-        
     }
     
-    function sort(data){
-        var obj = [];
-        for(var i=0;i<10;i++){
-            console.log(data.items[i]);
-            var url = data.items[i].pagemap;
-            var hit = {
-                'url': url
-            };
-            obj.push(url);
-        }
-        return obj;
-    }
+    
     
 };
