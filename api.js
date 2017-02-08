@@ -28,7 +28,7 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-         var a = data
+         var a = data.kind
           res.send(a);
       });
       
