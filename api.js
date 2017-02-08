@@ -28,9 +28,11 @@ module.exports= function(app, db){
           if (err){
               console.log(err);
           }
-          
-          console.log(data);
-        res.send(data.items);
+          var a= data
+          console.log(a);
+        res.send((a.items).map(function(i){
+            return(i.title)
+        }));
          
       });
       
