@@ -30,7 +30,14 @@ module.exports= function(app, db){
           }
           var a= JSON.parse(data);
           console.log(a);
-        res.send(a.items);
+        res.send(a.items.map(function(i){
+            var obj = {
+                'title': i.title,
+                'url': i.link,
+                'snippet': i.snippet
+                
+            }
+        }));
        
          
       });
