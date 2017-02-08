@@ -30,19 +30,19 @@ module.exports= function(app, db){
         }else offset = req.query.offset*10;
         
         
-        res.send(searchGoog(search, offset));
+        searchGoog(search, offset, res);
     }
     
     
     
-    function searchGoog(search, offset){
-        var b = []
+    function searchGoog(search, offset, res){
        request('https://www.googleapis.com/customsearch/v1?q='+ search +'&cx=005494827447375698070:kljageccrgu&num=10&searchType=image&start='+offset+'&fields=items%2Cpromotions&key=AIzaSyBrzh-HsmfFBuMJXycWFKWHhmOTVbMjEdc', function(err, response, data){
           if (err){
               console.log(err);
           }
           var a= JSON.parse(data);
-          return(buildIt(a, search));
+          res.send(buildIt(a, search));
+          saveSearch(search.split('+').join(' '), db);
       });
       
     }
@@ -68,7 +68,6 @@ module.exports= function(app, db){
                 'url': i.link,
                 'snippet': i.snippet
             };
-            saveSearch(search.split('+').join(' '), db);
             return obj;
         }));
     }
