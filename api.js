@@ -76,9 +76,9 @@ module.exports= function(app, db){
             if (err){
                 console.log(err);
             }
-            var a = JSON.parse(data)
-            res.send(a);
-        })
+            
+            res.send(data);
+        });
     }
     
 };
