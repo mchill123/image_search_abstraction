@@ -24,9 +24,9 @@ module.exports= function(app, db){
             offset = 1;
         }else offset = req.query.offset;
         
-        soog.search(search, {page: offset}).then(function(data){
-            console.log(data)
-        })
+      var data = soog.search(search, {page: offset})
+      
+      res.send(data);
             
     }
     
